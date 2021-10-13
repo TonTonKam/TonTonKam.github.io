@@ -78,8 +78,7 @@ container.style.flex = 10;
  */
 
 //h1
-let titleSelector = document.querySelector('h1');
-let nameValue = "";
+let titleSelector = document.getElementById('title');
 
 //fonction onclick()
 /**
@@ -105,28 +104,32 @@ function clicker(evt){
 
     //permet de mettre l'event que sur 1 element
     evt.stopPropagation();
-    tar = document.getElementById(evt.target);
+    tar = document.getElementById(evt.target.innerHTML);
+    tar1 = evt.target.innerHTML;
     console.log(evt);
     console.log("valeur de tar : " + tar);
+    console.log("valeur de tar : " + tar1);
 }
 
-switch(nameValue){
-    case 'apropos':
-        titleSelector.textContent = 'A propos de moi';
-        break;
-    case 'motivations':
-        titleSelector.textContent = 'Mes motivations';
-        break;
-    case 'parcours':
-        titleSelector.textContent = 'Mon parcours professionnel';
-        break;
-    case 'competences':
-        titleSelector.textContent = 'Mes compétences / réalisations';
-        break;
-    default:
-        //accueil
-        titleSelector.textContent = 'A propos de moi';
-        break;
+function changeTitle(nameValue){
+    switch(nameValue){
+        case 'accueil':
+            titleSelector.textContent = 'A propos de moi';
+            break;
+        case 'motivations':
+            titleSelector.textContent = 'Mes motivations';
+            break;
+        case 'parcours':
+            titleSelector.textContent = 'Mon parcours professionnel';
+            break;
+        case 'competences':
+            titleSelector.textContent = 'Mes compétences / réalisations';
+            break;
+        default:
+            //accueil
+            titleSelector.textContent = 'A propos de moi';
+            break;
+    }
 }
 
 /**
