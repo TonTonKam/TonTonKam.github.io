@@ -7,7 +7,7 @@
 
 let liMenu = document.getElementsByTagName('li');
 for (let j = 0; j < liMenu.length; j++) {
-    liMenu[j].addEventListener('click', clicker);
+    liMenu[j].addEventListener('click', clicId);
 }
 
 /**
@@ -22,10 +22,6 @@ let menu2 = document.querySelectorAll('.menu2');
 /** il faut laisser le .menu2 en display='none' hors fonction pour en
  * faire des parametres par defaut
  */
-for (let k = 0; k < menu2.length; k++) {
-    let style = menu2[k].style;
-    style.display = 'none';
-}
 
 function displayOn(){
     for (let k = 0; k < menu2.length; k++) {
@@ -80,25 +76,30 @@ function clicker(evt){
     console.log("valeur de tar : " + tar);
 }
 
-switch(nameValue){
-    case 'apropos':
-        titleSelector.textContent = 'A propos de moi';
-        break;
-    case 'motivations':
-        titleSelector.textContent = 'Mes motivations';
-        break;
-    case 'parcours':
-        titleSelector.textContent = 'Mon parcours professionnel';
-        break;
-    case 'competences':
-        titleSelector.textContent = 'Mes compétences / réalisations';
-        break;
-    default:
-        //accueil
-        titleSelector.textContent = 'A propos de moi';
-        break;
+function clicId(evt){
+    evt.stopPropagation();
+    SetTitle(evt.target.id)
 }
-
+function SetTitle(nameValue){
+    switch(nameValue){
+        case 'apropos':
+            titleSelector.textContent = 'A propos de moi';
+            break;
+        case 'motivations':
+            titleSelector.textContent = 'Mes motivations';
+            break;
+        case 'parcours':
+            titleSelector.textContent = 'Mon parcours professionnel';
+            break;
+        case 'competences':
+            titleSelector.textContent = 'Mes compétences / réalisations';
+            break;
+        default:
+            //accueil
+            titleSelector.textContent = 'A propos de moi';
+            break;
+    }
+}
 /**
  * j'ai bien envie de faire un switch pour le contenu aussi
  * mais "mes compétences / réalisations" auront des liens et des images
