@@ -1,8 +1,3 @@
-//body
-let body = document.querySelector('body').style;
-body.display = 'flex';
-body.fontSize = '18px';
-
 /**
  * la nav sera mise a la vertical a gauche
  * la nav sera fixe en desktop
@@ -10,27 +5,8 @@ body.fontSize = '18px';
  * sur .menu1
  */
 
-//nav
-let nav = document.querySelector('nav');
-nav.style.flex = 2;
-
-/** quand la variable a plusieurs elements c'est forcement un tableau */
-let ulMenu = document.getElementsByTagName('ul');
-for (let i = 0; i < ulMenu.length; i++) {
-    let style = ulMenu[i].style;
-    style.display = "flex";
-    style.flexDirection = "column";
-    style.margin = 0;
-    style.padding = 0;
-}
-
 let liMenu = document.getElementsByTagName('li');
 for (let j = 0; j < liMenu.length; j++) {
-    let style = liMenu[j].style;
-    style.display = 'inline-block';
-    style.border = 'solid 1px';
-    style.padding = '3px';
-    style.textAlign = 'center';
     liMenu[j].addEventListener('click', clicker);
 }
 
@@ -66,12 +42,6 @@ function displayOff(){
 
 menu1.onmouseover = displayOn;
 menu1.onmouseout = displayOff;
-
-
-/*********** CONTENAIRE ***********/
-let container = document.querySelector('.container');
-container.style.textAlign = 'center';
-container.style.flex = 10;
 /**
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
