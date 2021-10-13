@@ -42,26 +42,6 @@ menu1.onmouseout = displayOff;
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
  */
-
-//h1
-let titleSelector = document.querySelector('h1');
-let nameValue = "";
-
-//fonction onclick()
-/**
- * si j'appuye sur le 'li' de l'id == 'machin'
- * alors le 'nameValue' du switch prend la valeur de 'machin'
- *
- * evt.target attibut quelque chose au target
- * 
- * function clicker(evt){
- *  return evt.target
- * }
- * li.addEventListener('click' , clicker);
- * 
- * switch(clicker)
- */
-
 function clicker(evt){
     // /**
     //  * dans cette fonction, le 1er <li> prend '2em', mais les autres
@@ -76,11 +56,18 @@ function clicker(evt){
     console.log("valeur de tar : " + tar);
 }
 
+/**
+ * la fonction prend comme evt l'endroit cliqué
+ * stopPropagation() empeche de prendre toute autres informations
+ * fonction modifiTitle utilise comme parametre l'id de la balise cliquer
+ * @param {*} evt 
+ */
 function clicId(evt){
     evt.stopPropagation();
-    SetTitle(evt.target.id)
+    modifiTitle(evt.target.id)
 }
-function SetTitle(nameValue){
+
+function modifiTitle(nameValue){
     switch(nameValue){
         case 'apropos':
             titleSelector.textContent = 'A propos de moi';
