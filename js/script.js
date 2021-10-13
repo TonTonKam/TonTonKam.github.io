@@ -31,6 +31,7 @@ for (let j = 0; j < liMenu.length; j++) {
     style.border = 'solid 1px';
     style.padding = '3px';
     style.textAlign = 'center';
+    liMenu[j].addEventListener('click', clicker);
 }
 
 /**
@@ -85,11 +86,30 @@ let nameValue = "";
  * si j'appuye sur le 'li' de l'id == 'machin'
  * alors le 'nameValue' du switch prend la valeur de 'machin'
  *
+ * evt.target attibut quelque chose au target
  * 
- * function click(){
- * 
+ * function clicker(evt){
+ *  return evt.target
  * }
+ * li.addEventListener('click' , clicker);
+ * 
+ * switch(clicker)
  */
+
+function clicker(evt){
+    // /**
+    //  * dans cette fonction, le 1er <li> prend '2em', mais les autres
+    //  * aussi prennent aussi '2em' se qui rends les 2e <li> a '4em'
+    //  */
+    // evt.target.style.fontSize = '2em';
+
+    //permet de mettre l'event que sur 1 element
+    evt.stopPropagation();
+    tar = document.getElementById(evt.target);
+    console.log(evt);
+    console.log("valeur de tar : " + tar);
+}
+
 switch(nameValue){
     case 'apropos':
         titleSelector.textContent = 'A propos de moi';
