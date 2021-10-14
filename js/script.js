@@ -19,25 +19,34 @@ for (let j = 0; j < liMenu.length; j++) {
 let menu1 = document.querySelector('.menu1');
 let menu2 = document.querySelectorAll('.menu2');
 
+/**
+ * en ciblant l'id il ne prend pas en compte le <h1>
+ */
+let titleSelector = document.getElementById('title');
+
 /** il faut laisser le .menu2 en display='none' hors fonction pour en
  * faire des parametres par defaut
  */
 
 function displayOn(){
     for (let k = 0; k < menu2.length; k++) {
-        let style = menu2[k].style;
-        style.display = 'inline-block';
+        menu2[k].classList.remove("hidden");
     }
 }
 function displayOff(){
     for (let k = 0; k < menu2.length; k++) {
-        let style = menu2[k].style;
-        style.display = 'none';
+        menu2[k].classList.add("hidden");
     }
 }
 
 menu1.onmouseover = displayOn;
 menu1.onmouseout = displayOff;
+
+//fonctionne pas?
+// menu1.addEventListener("onmouseover", displayOn, false);
+// menu1.addEventListener("onmouseout", displayOff, false);
+
+
 /**
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
@@ -51,9 +60,13 @@ function clicker(evt){
 
     //permet de mettre l'event que sur 1 element
     evt.stopPropagation();
-    tar = document.getElementById(evt.target);
+    tar0 = evt.target;
+    tar = evt.target.id;
+    tar1 = evt.target.class;
     console.log(evt);
+    console.log("valeur de tar0 : " + tar0);
     console.log("valeur de tar : " + tar);
+    console.log("valeur de tar1 : " + tar1);
 }
 
 /**
