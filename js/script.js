@@ -86,6 +86,14 @@ let selectorA = document.querySelector('a').style;
 selectorA.textDecoration = 'none';
 selectorA.color = 'black';
 
+//.ulLeft
+let ulLeft = document.querySelectorAll('.ulLeft');
+for (let indexation = 0; indexation < ulLeft.length; indexation++) {
+    let style = ulLeft[indexation].style;
+    style.padding = 0;
+    style.textAlign = 'left';
+}
+
 //paragraphe
 let paraDesc = document.getElementById('paraDescription');
 let paraMotiv = document.getElementById('paraMotivations');
@@ -112,6 +120,8 @@ funcOn(paraDesc);
  * li.addEventListener('click' , clicker);
  * 
  * switch(clicker)
+ * 
+ * quand le parametre event est mis, il est bon de creer un event.stopPropagation();
  */
 
 function clicker(evt){
