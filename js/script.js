@@ -51,6 +51,7 @@ for (let k = 0; k < menu2.length; k++) {
     style.display = 'none';
 }
 
+//reutiliser les fonctions pour les faire sur d'autre secteur
 function displayOn(){
     for (let k = 0; k < menu2.length; k++) {
         let style = menu2[k].style;
@@ -95,7 +96,7 @@ let titleSelector = document.getElementById('title');
  * switch(clicker)
  */
 
-function clicker(evt){
+function tester(evt){
     // /**
     //  * dans cette fonction, le 1er <li> prend '2em', mais les autres
     //  * aussi prennent aussi '2em' se qui rends les 2e <li> a '4em'
@@ -110,25 +111,44 @@ function clicker(evt){
     console.log("valeur de tar : " + tar);
     console.log("valeur de tar : " + tar1);
 }
+function clicker(evt){
+    evt.stopPropagation();
+    changeTitle(evt.target.id);
+}
 
 function changeTitle(nameValue){
-    switch(nameValue){
-        case 'accueil':
-            titleSelector.textContent = 'A propos de moi';
-            break;
-        case 'motivations':
-            titleSelector.textContent = 'Mes motivations';
-            break;
-        case 'parcours':
-            titleSelector.textContent = 'Mon parcours professionnel';
-            break;
-        case 'competences':
-            titleSelector.textContent = 'Mes compétences / réalisations';
-            break;
-        default:
-            //accueil
-            titleSelector.textContent = 'A propos de moi';
-            break;
+    // switch(nameValue){
+    //     case 'accueil':
+    //         titleSelector.textContent = 'A propos de moi';
+    //         break;
+    //     case 'motivations':
+    //         titleSelector.textContent = 'Mes motivations';
+    //         break;
+    //     case 'parcours':
+    //         titleSelector.textContent = 'Mon parcours professionnel';
+    //         break;
+    //     case 'competences':
+    //         titleSelector.textContent = 'Mes compétences / réalisations';
+    //         break;
+    //     default:
+    //         //accueil
+    //         titleSelector.textContent = 'A propos de moi def';
+    //         break;
+    // }
+    if(nameValue == 'accueil'){
+        titleSelector.textContent = 'En se qui me concerne';
+    }
+    else if(nameValue == 'motivations'){
+        titleSelector.textContent = 'Mes motivations';
+    }
+    else if(nameValue == 'parcours'){
+        titleSelector.textContent = 'Mon parcours professionnel';
+    }
+    else if(nameValue == 'competences'){
+        titleSelector.textContent = 'Mes compétences / réalisations';
+    }
+    else{
+        titleSelector.textContent = 'A propos de moi';
     }
 }
 
@@ -137,3 +157,8 @@ function changeTitle(nameValue){
  * mais "mes compétences / réalisations" auront des liens et des images
  */
 
+/**
+ * je vais integrer un boolean dans les paragraphes pour que quand celui
+ * est 'false', il reste masque
+ */
+let paraDesc = document.getElementById('paraDescription');
