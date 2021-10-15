@@ -150,30 +150,22 @@ function changeTitle(nameValue){
     // }
     if(nameValue == 'apropos'){
         titleSelector.textContent = 'En se qui me concerne';
-        funcNone(paraMotiv);
-        funcNone(paraParc);
-        funcNone(paraComp);
+        funcNone(paraMotiv, paraParc, paraComp);
         funcOn(paraDesc);
     }
     else if(nameValue == 'motivations'){
         titleSelector.textContent = 'Mes motivations';
-        funcNone(paraDesc);
-        funcNone(paraParc);
-        funcNone(paraComp);
+        funcNone(paraDesc, paraParc, paraComp);
         funcOn(paraMotiv);
     }
     else if(nameValue == 'parcours'){
         titleSelector.textContent = 'Mon parcours professionnel';
-        funcNone(paraMotiv);
-        funcNone(paraDesc);
-        funcNone(paraComp);
+        funcNone(paraMotiv, paraDesc, paraComp);
         funcOn(paraParc);
     }
     else if(nameValue == 'competences'){
         titleSelector.textContent = 'Mes compétences / réalisations';
-        funcNone(paraMotiv);
-        funcNone(paraDesc);
-        funcNone(paraParc);
+        funcNone(paraMotiv, paraDesc, paraParc);
         funcOn(paraComp);
     }
     else{
@@ -187,12 +179,13 @@ function changeTitle(nameValue){
  */
 
 /**
- * 
- * @param {*} doc permet de prendre la div ciblé et de lui attribuer un display: none;
+ * rest Parameters
+ * il prendra n'importe quel valeur que le parametre lui donnera
+ * @param {*} docs permet de prendre la div ciblé et de lui attribuer un display: none;
  */
-function funcNone(docs){
+function funcNone(...docs){
     //fonction avec les div pas avec les p
-    docs.style.display = 'none';
+    docs.map(x => x.style.display = 'none');
 }
 function funcOn(doc) {
     doc.style.display = 'inline-block';
