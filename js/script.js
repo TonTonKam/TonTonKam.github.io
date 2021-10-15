@@ -70,9 +70,9 @@ menu1.onmouseout = displayOff;
 
 
 /*********** CONTENAIRE ***********/
-let container = document.querySelector('.container');
-container.style.textAlign = 'center';
-container.style.flex = 10;
+let container = document.querySelector('.container').style;
+container.textAlign = 'center';
+container.flex = 10;
 /**
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
@@ -92,6 +92,13 @@ for (let indexation = 0; indexation < ulLeft.length; indexation++) {
     let style = ulLeft[indexation].style;
     style.padding = 0;
     style.textAlign = 'left';
+}
+
+//.souligner
+let soulign = document.querySelectorAll('.souligner');
+for (let l = 0; l < soulign.length; l++) {
+    let style = soulign[l].style;
+    style.textDecoration = 'underline';
 }
 
 //paragraphe
@@ -184,10 +191,20 @@ function changeTitle(nameValue){
  * @param {*} docs permet de prendre la div ciblé et de lui attribuer un display: none;
  */
 function funcNone(...docs){
-    //fonction avec les div pas avec les p
+    //fonctionne avec les div pas avec les p
     docs.map(x => x.style.display = 'none');
 }
-function funcOn(doc) {
-    doc.style.display = 'inline-block';
+function funcOn(...docs) {
+    docs.map(x => x.style.display = 'inline-block');
 }
 
+/***** Objets *****/
+
+function Parcours(date, entreprise, poste, realisation){
+    this.date = date;
+    this.entreprise = entreprise;
+    this.poste = poste;
+    this.realisation = realisation;
+}
+
+let parcours1 = new Parcours('15.08.1990', 'école', 'étudiant', "j'ai appris l'electronique");
