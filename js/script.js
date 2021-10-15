@@ -15,7 +15,7 @@ let nav = document.querySelector('nav');
 nav.style.flex = 2;
 
 /** quand la variable a plusieurs elements c'est forcement un tableau */
-let ulMenu = document.getElementsByTagName('ul');
+let ulMenu = document.querySelectorAll('.menuLu');
 for (let i = 0; i < ulMenu.length; i++) {
     let style = ulMenu[i].style;
     style.display = "flex";
@@ -24,7 +24,7 @@ for (let i = 0; i < ulMenu.length; i++) {
     style.padding = 0;
 }
 
-let liMenu = document.getElementsByTagName('li');
+let liMenu = document.querySelectorAll('.menuLi');
 for (let j = 0; j < liMenu.length; j++) {
     let style = liMenu[j].style;
     style.display = 'inline-block';
@@ -81,6 +81,24 @@ container.style.flex = 10;
 //h1
 let titleSelector = document.getElementById('title');
 
+//a
+let selectorA = document.querySelector('a').style;
+selectorA.textDecoration = 'none';
+selectorA.color = 'black';
+
+//paragraphe
+let paraDesc = document.getElementById('paraDescription');
+let paraMotiv = document.getElementById('paraMotivations');
+let paraParc = document.getElementById('paraParcours');
+let paraComp = document.getElementById('paraCompetences');
+
+//*****presentation par default*****
+titleSelector.textContent = 'En se qui me concerne';
+funcNone(paraMotiv);
+funcNone(paraParc);
+funcNone(paraComp);
+funcOn(paraDesc);
+
 //fonction onclick()
 /**
  * si j'appuye sur le 'li' de l'id == 'machin'
@@ -96,21 +114,6 @@ let titleSelector = document.getElementById('title');
  * switch(clicker)
  */
 
-function tester(evt){
-    // /**
-    //  * dans cette fonction, le 1er <li> prend '2em', mais les autres
-    //  * aussi prennent aussi '2em' se qui rends les 2e <li> a '4em'
-    //  */
-    // evt.target.style.fontSize = '2em';
-
-    //permet de mettre l'event que sur 1 element
-    evt.stopPropagation();
-    tar = document.getElementById(evt.target.innerHTML);
-    tar1 = evt.target.innerHTML;
-    console.log(evt);
-    console.log("valeur de tar : " + tar);
-    console.log("valeur de tar : " + tar1);
-}
 function clicker(evt){
     evt.stopPropagation();
     changeTitle(evt.target.id);
@@ -135,17 +138,33 @@ function changeTitle(nameValue){
     //         titleSelector.textContent = 'A propos de moi def';
     //         break;
     // }
-    if(nameValue == 'accueil'){
+    if(nameValue == 'apropos'){
         titleSelector.textContent = 'En se qui me concerne';
+        funcNone(paraMotiv);
+        funcNone(paraParc);
+        funcNone(paraComp);
+        funcOn(paraDesc);
     }
     else if(nameValue == 'motivations'){
         titleSelector.textContent = 'Mes motivations';
+        funcNone(paraDesc);
+        funcNone(paraParc);
+        funcNone(paraComp);
+        funcOn(paraMotiv);
     }
     else if(nameValue == 'parcours'){
         titleSelector.textContent = 'Mon parcours professionnel';
+        funcNone(paraMotiv);
+        funcNone(paraDesc);
+        funcNone(paraComp);
+        funcOn(paraParc);
     }
     else if(nameValue == 'competences'){
         titleSelector.textContent = 'Mes compétences / réalisations';
+        funcNone(paraMotiv);
+        funcNone(paraDesc);
+        funcNone(paraParc);
+        funcOn(paraComp);
     }
     else{
         titleSelector.textContent = 'A propos de moi';
@@ -158,7 +177,14 @@ function changeTitle(nameValue){
  */
 
 /**
- * je vais integrer un boolean dans les paragraphes pour que quand celui
- * est 'false', il reste masque
+ * 
+ * @param {*} doc permet de prendre la div ciblé et de lui attribuer un display: none;
  */
-let paraDesc = document.getElementById('paraDescription');
+function funcNone(docs){
+    //fonction avec les div pas avec les p
+    docs.style.display = 'none';
+}
+function funcOn(doc) {
+    doc.style.display = 'inline-block';
+}
+

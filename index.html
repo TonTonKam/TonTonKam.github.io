@@ -15,11 +15,11 @@
         valeur du contenu afin de changer la valeur du switch quand
         l'on clic dessus) -->
     <nav>
-        <ul>
-            <li id="apropos" class="menu1">
+        <ul class="menuLu">
+            <li id="apropos" class="menu1 menuLi">
                 <!-- pas de logo pour le moment -->
                 <img src="" alt="">En se qui me concerne
-                <ul>
+                <ul class="menuLu">
                     <li id="motivations" class="menu2 menuLi">Mes motivations</li>
                     <li id="parcours" class="menu2 menuLi">Mon parcours porfessionnel</li>
                     <li id="competences" class="menu2 menuLi">Mes compétences / réalisations</li>
@@ -34,37 +34,57 @@
         <div class="contenuText">
             <!-- Le contenu des paragraphes sera masqué tant que l'utilisateur
                 n'aura pas cliqué sur un onclet du menu -->
-            <p id="paraDescription" ><!-- debut paragraphe A propos de moi -->
+            <div id="paraDescription" ><!-- debut paragraphe A propos de moi -->
                 <p><h3>Bonjour,</h3></p>
                 <p>Je m'appelle <i>Yann KRZEMINSKI</i>, J'ai 37ans et suis actuellement en reconversion professionel.</p>
                 <p>J'étais vendeur et techniciens en informatique dans différente entreprises telque <b>Surcouf, Grosill, etc. </b></p>
                 <p>Je me suis mis a la programmation car c'est un metier passionnant par son évoltion pertétuel.</p>
-                <p>Retrouvé mes motivations dans la partie concernée</p>
-            </p><!-- fin paragraphe A propos de moi -->
+                <p>Retrouvé mes motivations, mon parcours ainsi que mes compétences dans le menu.</p>
+            </div><!-- fin paragraphe A propos de moi -->
 
-            <p id="paraMotivations" ><!-- debut paragraphe -->
+            <div id="paraMotivations" ><!-- debut paragraphe -->
                 <p><h3>Se qui me motive,</h3></p>
                 <p>Ayant travaillé des années dans la réparation d'ordinateurs, se qui me passionne c'est la recherche de solutions.</p>
-                <p>Je retrouve ce même format dans l'univers de la programmation et cela me motive</p>
+                <p>Je retrouve ce même format dans l'univers de la programmation et cela me motive.</p>
                 <p>Ordonné, méthodique et précautionneux, je prend beaucoups de temps a concevoir avant de me lancer dans la réalisation d'un programme,
                     cela m'a évité à de nombreuses reprise des erreurs de réalisations et de perte de temps a devoir tous refaire.
                 </p>
-                <p><b>Mes ambitions dans un futur :</b></p>
-                <ul>
-                    <li>Connaitre différents langages de programmation, Framework afin d'être compétitif</li>
-                    <li>Trouver une société avec qui évoluer dans le milieu professionnel pour pouvoir partager nos connaissances aussi bien : 
+                <p><b>Mes ambitions dans le futur :</b></p>
+                <ul class="ulLeft">
+                    <li>Connaitre différents langages de programmation, Framework afin d'être compétitif dans le milieu professionel.</li>
+                    <li>Trouver une société avec qui évoluer pour pouvoir partager nos connaissances aussi bien : 
                         <b> conception</b> que <b>réalisation</b>. 
                     </li>
-                    <li></li>
+                    <li>Créer de A à Z des applications 100% "Android": fonctionnel, sécurisé, rétrocompatible (et si possible productive)</li>
                 </ul>
-            </p><!-- fin paragraphe -->
+            </div><!-- fin paragraphe -->
 
             <div id="paraParcours" ><!-- debut paragraphe -->
-
+                <p><h3>Voici mon parcours Professionnel</h3></p>
+                <!-- pour cette partie, j'ai envie de faire une fresque chronologique ou quand on passe
+                    la souris sur un element de la freque, le paragraphe montre l'element de celui-ci -->
+                
+                <!-- fresque mis a la vertical -->
+                <!-- paragraphe avec date / nom de l'entreprise / poste / se qui a ete fait -->
+                <p id="dateFresque">Date</p>
+                <p id="entreprise">Entreprise</p>
+                <p id="poste">Poste</p>
+                <p id="realisationPoste">Réalisations</p>
             </div><!-- fin paragraphe -->
 
             <div id="paraCompetences" ><!-- debut paragraphe -->
-
+                <p><h3>Mes compétences</h3></p>
+                <p>Langages :</p>
+                <ul class="ulLeft">
+                    <li>Java</li>
+                    <li>HTML / CSS</li>
+                    <li>Javascript</li>
+                    <li>PHP</li>
+                    <li>Kotlin</li>
+                    <li>Python</li>
+                </ul>
+                <p><h3>Mes réalisations</h3></p>
+                <p><a href="https://github.com/TonTonKam" target="_blank">Voici mon Github avec mes réalisations et conceptions</a></p>
             </div><!-- fin paragraphe -->
         </div>
     </div>
