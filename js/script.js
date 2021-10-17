@@ -111,7 +111,6 @@ let paraParc = document.getElementById('paraParcours');
 let paraComp = document.getElementById('paraCompetences');
 
 //parcours
-
 paraParc.style.width = '80%';
 
 let fresqueDesign = document.getElementById('contentFresque').style;
@@ -124,7 +123,7 @@ paragraphText.border = "1px solid";
 
 //contenaireFresque
 let contenaireFresque = document.getElementById('contenaireFresque').style;
-contenaireFresque.height = '150px';
+contenaireFresque.height = '250px';
 contenaireFresque.width = '20%';
 contenaireFresque.margin = '2%';
 contenaireFresque.padding = '1%';
@@ -138,10 +137,13 @@ for (let n = 0; n < itemsFresque.length; n++) {
     let style = itemsFresque[n].style;
     style.width = '100%';
     style.border = 'solid 1px';
+    style.backgroundColor = '#'+randomColor+randomColor+randomColor;
+    /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
+     * au nombre qu'il y a dedans
+    */
     let calcHeight = 100 / itemsFresque.length;
     let resultCalcHeight = calcHeight+'%';
     style.height = resultCalcHeight;
-    style.backgroundColor = '#'+randomColor+randomColor+randomColor;
 }
 
 //*****presentation par default*****
