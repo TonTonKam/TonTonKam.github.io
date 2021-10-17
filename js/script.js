@@ -216,4 +216,17 @@ function Parcours(date, entreprise, poste, realisation){
     this.realisation = realisation;
 }
 
-let parcours1 = new Parcours('septembre 1990', 'école', 'étudiant', "apprentissage de l'electronique");
+let parcours1 = new Parcours("septembre 1990", "école", "étudiant", "apprentissage en electronique");
+
+//mise en place de l'objet dans le html
+let paraParcDate = document.getElementById('dateFresque');
+paraParcDate.textContent = parcours1.date;
+
+let paraParcEntreprise = document.getElementById('entreprise');
+paraParcEntreprise.textContent = parcours1.entreprise;
+
+let paraParcPoste = document.getElementById('poste');
+paraParcPoste.textContent = parcours1.poste;
+
+let paraParcRealisation = document.getElementById('realisationPoste');
+paraParcRealisation.textContent = parcours1.realisation;
