@@ -68,8 +68,8 @@ function displayOff(){
 menu1.onmouseover = displayOn;
 menu1.onmouseout = displayOff;
 
-// menu1.addEventListener("onMouseOver", displayOn, false);
-// menu1.addEventListener("onMouseOut", displayOff, false);
+// menu1.addEventListener("onmouseover", displayOn, false);
+// menu1.addEventListener("onmouseout", displayOff, false);
 
 
 /*********** CONTENAIRE ***********/
@@ -111,19 +111,37 @@ let paraParc = document.getElementById('paraParcours');
 let paraComp = document.getElementById('paraCompetences');
 
 //parcours
+
+paraParc.style.width = '80%';
+
 let fresqueDesign = document.getElementById('contentFresque').style;
-fresqueDesign.width = '20%';
+fresqueDesign.width = '30%';
 fresqueDesign.float = 'right';
 let paragraphText = document.getElementById('contenText').style;
-paragraphText.width = '70%';
+paragraphText.width = '60%';
 paragraphText.float = 'left';
 paragraphText.border = "1px solid";
 
-//puce
-let puce = document.querySelectorAll('.puce');
-for (let m = 0; m < puce.length; m++) {
-    let style = puce[m].style;
-    style.listStyle = 'decimal';
+//contenaireFresque
+let contenaireFresque = document.getElementById('contenaireFresque').style;
+contenaireFresque.height = '150px';
+contenaireFresque.width = '20%';
+contenaireFresque.margin = '2%';
+contenaireFresque.padding = '1%';
+contenaireFresque.display = 'flex';
+contenaireFresque.flexDirection = 'column';
+contenaireFresque.border = '1px solid';
+
+//itemsFresque
+let itemsFresque = document.querySelectorAll('.elementFresque');
+for (let n = 0; n < itemsFresque.length; n++) {
+    let style = itemsFresque[n].style;
+    style.width = '100%';
+    style.border = 'solid 1px';
+    let calcHeight = 100 / itemsFresque.length;
+    let resultCalcHeight = calcHeight+'%';
+    style.height = resultCalcHeight;
+    style.backgroundColor = '#'+randomColor+randomColor+randomColor;
 }
 
 //*****presentation par default*****
@@ -188,6 +206,7 @@ function changeTitle(nameValue){
         titleSelector.textContent = 'Mon parcours professionnel';
         funcNone(paraMotiv, paraDesc, paraComp);
         funcOn(paraParc);
+
     }
     else if(nameValue == 'competences'){
         titleSelector.textContent = 'Mes compétences / réalisations';
@@ -215,6 +234,13 @@ function funcNone(...docs){
 }
 function funcOn(...docs) {
     docs.map(x => x.style.display = 'inline-block');
+}
+
+/**
+ * creation d'un chiffre random pour la couleur de back des itemsFresque
+ */
+function randomColor() {
+    Math.random() * (255 - 1) + 1;
 }
 
 /***** utilisation des Objets *****/
