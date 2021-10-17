@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- page css de test-->
     <link rel="stylesheet" href="css/style.css">
-    <title>Maquette Porte Folio</title>
+    <title>Maquette Porte Folio sans css</title>
 </head>
 <body>
     <!-- Dans la nav, seul le .menu1 sera apparent
@@ -65,13 +65,20 @@
                     la souris sur un element de la freque, le paragraphe montre l'element de celui-ci -->
                 
                 <!-- fresque mis a la vertical -->
-                <div class="contentFresque"></div>
+                <div id="contentFresque">
+                    <ul>
+                        <li id="fresque1" class="puce"></li>
+                        <li id="fresque2" class="puce"></li>
+                        <li id="fresque3" class="puce"></li>
+                        <li id="fresque4" class="puce"></li>
+                    </ul>
+                </div>
                 <!-- paragraphe avec date / nom de l'entreprise / poste / se qui a ete fait -->
-                <div class="contenText">
-                    <p id="dateFresque">Date</p>
-                    <p id="entreprise">Entreprise</p>
-                    <p id="poste">Poste</p>
-                    <p id="realisationPoste">Réalisations</p>
+                <div id="contenText">
+                    <p ><span id="dateFresque" class="souligner"></span></p>
+                    <p ><span id="entreprise" class="souligner"></span></p>
+                    <p ><span id="poste" class="souligner"></span></p>
+                    <p ><span id="realisationPoste" class="souligner"></span></p>
                 </div>
             </div><!-- fin paragraphe -->
 

@@ -68,6 +68,9 @@ function displayOff(){
 menu1.onmouseover = displayOn;
 menu1.onmouseout = displayOff;
 
+// menu1.addEventListener("onMouseOver", displayOn, false);
+// menu1.addEventListener("onMouseOut", displayOff, false);
+
 
 /*********** CONTENAIRE ***********/
 let container = document.querySelector('.container').style;
@@ -106,6 +109,22 @@ let paraDesc = document.getElementById('paraDescription');
 let paraMotiv = document.getElementById('paraMotivations');
 let paraParc = document.getElementById('paraParcours');
 let paraComp = document.getElementById('paraCompetences');
+
+//parcours
+let fresqueDesign = document.getElementById('contentFresque').style;
+fresqueDesign.width = '20%';
+fresqueDesign.float = 'right';
+let paragraphText = document.getElementById('contenText').style;
+paragraphText.width = '70%';
+paragraphText.float = 'left';
+paragraphText.border = "1px solid";
+
+//puce
+let puce = document.querySelectorAll('.puce');
+for (let m = 0; m < puce.length; m++) {
+    let style = puce[m].style;
+    style.listStyle = 'decimal';
+}
 
 //*****presentation par default*****
 titleSelector.textContent = 'En se qui me concerne';
@@ -199,6 +218,7 @@ function funcOn(...docs) {
 }
 
 /***** utilisation des Objets *****/
+//paragraphe parcours
 /**
  * pour la partie parcour, j'ai bien envie d'essayer les objets pour retransmettre
  * des infos venant de la fresque au paragraphe
@@ -216,9 +236,18 @@ function Parcours(date, entreprise, poste, realisation){
     this.realisation = realisation;
 }
 
-let parcours1 = new Parcours("septembre 1990", "école", "étudiant", "apprentissage en electronique");
+//liste
+const listeDate = ["Septembre 1989", "Octobre 1990", "Decembre 1991", "Janvier 1992"];
+const listeEntreprise = ["Lycée La Tourelle", "Montgallet", "Surcouf", "Grosbill"];
+//dans ces dernieres listes, il y a des repetitions
+const listePoste = ["Eleve", "Vendeur / technicien", "Vendeur / technicien","Vendeur / technicien"];
+const listeRealisation = ["BEP Electronique / Bac Pro MRIM", "ventes et reparations d'ordinateur",
+ "ventes et reparations d'ordinateur", "ventes et reparations d'ordinateur"];
 
-//mise en place de l'objet dans le html
+//instanciation de l'objet
+ let parcours1 = new Parcours(listeDate[3], listeEntreprise[3], listePoste[3], listeRealisation[3]);
+
+//mise en place de l'integration de l'objet dans le html
 let paraParcDate = document.getElementById('dateFresque');
 paraParcDate.textContent = parcours1.date;
 
@@ -230,3 +259,5 @@ paraParcPoste.textContent = parcours1.poste;
 
 let paraParcRealisation = document.getElementById('realisationPoste');
 paraParcRealisation.textContent = parcours1.realisation;
+
+//designation de la puce pour faire changer le texte
