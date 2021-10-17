@@ -198,8 +198,17 @@ function funcOn(...docs) {
     docs.map(x => x.style.display = 'inline-block');
 }
 
-/***** Objets *****/
-
+/***** utilisation des Objets *****/
+/**
+ * pour la partie parcour, j'ai bien envie d'essayer les objets pour retransmettre
+ * des infos venant de la fresque au paragraphe
+ * 
+ * @param {*} date Parcours.date
+ * @param {*} entreprise Parcours.entreprise
+ * @param {*} poste Parcours.poste
+ * @param {*} realisation Parcours.realisation
+ */
+//constructor
 function Parcours(date, entreprise, poste, realisation){
     this.date = date;
     this.entreprise = entreprise;
@@ -207,4 +216,4 @@ function Parcours(date, entreprise, poste, realisation){
     this.realisation = realisation;
 }
 
-let parcours1 = new Parcours('15.08.1990', 'école', 'étudiant', "j'ai appris l'electronique");
+let parcours1 = new Parcours('septembre 1990', 'école', 'étudiant', "apprentissage de l'electronique");
