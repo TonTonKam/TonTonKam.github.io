@@ -137,7 +137,7 @@ for (let n = 0; n < itemsFresque.length; n++) {
     let style = itemsFresque[n].style;
     style.width = '100%';
     style.border = 'solid 1px';
-    style.backgroundColor = '#'+randomColor+randomColor+randomColor;
+    style.backgroundColor = '#'+randomColor+"."+randomColor+"."+randomColor;
     /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
      * au nombre qu'il y a dedans
     */
@@ -147,7 +147,7 @@ for (let n = 0; n < itemsFresque.length; n++) {
 }
 
 //*****presentation par default*****
-titleSelector.textContent = 'En se qui me concerne';
+titleSelector.textContent = 'En ce qui me concerne';
 funcNone(paraMotiv);
 funcNone(paraParc);
 funcNone(paraComp);
@@ -195,7 +195,7 @@ function changeTitle(nameValue){
     //         break;
     // }
     if(nameValue == 'apropos'){
-        titleSelector.textContent = 'En se qui me concerne';
+        titleSelector.textContent = 'En ce qui me concerne';
         funcNone(paraMotiv, paraParc, paraComp);
         funcOn(paraDesc);
     }
@@ -242,7 +242,7 @@ function funcOn(...docs) {
  * creation d'un chiffre random pour la couleur de back des itemsFresque
  */
 function randomColor() {
-    Math.random() * (255 - 1) + 1;
+    return Math.random() * (255 - 1) + 1;
 }
 
 /***** utilisation des Objets *****/
