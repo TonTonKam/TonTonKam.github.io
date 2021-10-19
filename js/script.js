@@ -250,9 +250,10 @@ function funcOn(...docs) {
 
 /**
  * creation d'un chiffre random pour la couleur de back des itemsFresque
+ * Math.floor defini en chiffre entier
  */
-function randomColor() {
-    return Math.random() * (255 - 1) + 1;
+function randomColor(max) {
+    return Math.floor(Math.random() * (max - 1) + 1);
 }
 
 /**
@@ -311,12 +312,12 @@ for(let o = 0; o < listeDate.length; o++){
      * je vais creer un evenement sur la div,
      * chaque element va afficher son objet dans le paragraphe
      */
-    elementFresque.addEventListener("onmouseover", remplissageContext(parcoursIt),false);
+    elementFresque.addEventListener("onmouseovers", remplissageContext(parcoursIt),false);
 
     let style = elementFresque.style;
     style.width = '100%';
     style.border = 'solid 1px';
-    style.backgroundColor = '#06A';
+    style.backgroundColor = "rgb("+ randomColor(255) + "," + randomColor(255) + "," + randomColor(255)+")";
     /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
      * au nombre qu'il y a dedans
     */
