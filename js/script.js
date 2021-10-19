@@ -13,6 +13,7 @@ body.fontSize = '18px';
 //nav
 let nav = document.querySelector('nav');
 nav.style.flex = 2;
+nav.style.background = 'linear-gradient(to left, #777, #fff)';
 
 /** quand la variable a plusieurs elements c'est forcement un tableau */
 let ulMenu = document.querySelectorAll('.menuLu');
@@ -76,6 +77,7 @@ menu1.onmouseout = displayOff;
 let container = document.querySelector('.container').style;
 container.textAlign = 'center';
 container.flex = 10;
+container.background = 'linear-gradient(to right, #777, #eee)';
 /**
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
@@ -261,7 +263,6 @@ function randomColor(max) {
  */
 
 function remplissageContext(obj) {
-
     //mise en place de l'integration de l'objet dans le html
     paraParcDate.textContent = obj.date;
     paraParcEntreprise.textContent = obj.entreprise;
@@ -312,12 +313,12 @@ for(let o = 0; o < listeDate.length; o++){
      * je vais creer un evenement sur la div,
      * chaque element va afficher son objet dans le paragraphe
      */
-    elementFresque.addEventListener("onmouseovers", remplissageContext(parcoursIt),false);
+    // elementFresque.addEventListener("onmouseovers", remplissageContext(parcoursIt),false);
 
     let style = elementFresque.style;
     style.width = '100%';
     style.border = 'solid 1px';
-    style.backgroundColor = "rgb("+ randomColor(255) + "," + randomColor(255) + "," + randomColor(255)+")";
+    style.backgroundColor = "rgb("+randomColor(255)+","+randomColor(255)+","+randomColor(255)+")";
     /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
      * au nombre qu'il y a dedans
     */
