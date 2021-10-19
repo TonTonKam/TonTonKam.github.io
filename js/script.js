@@ -104,7 +104,7 @@ for (let l = 0; l < soulign.length; l++) {
     style.textDecoration = 'underline';
 }
 
-//paragraphe
+//paragraphe General
 let paraDesc = document.getElementById('paraDescription');
 let paraMotiv = document.getElementById('paraMotivations');
 let paraParc = document.getElementById('paraParcours');
@@ -123,7 +123,7 @@ paragraphText.border = "1px solid";
 
 //contenaireFresque
 let contenaireFresque = document.getElementById('contenaireFresque').style;
-contenaireFresque.height = '250px';
+let contenaireMax = contenaireFresque.height = '250px';
 contenaireFresque.width = '20%';
 contenaireFresque.margin = '2%';
 contenaireFresque.padding = '1%';
@@ -131,20 +131,30 @@ contenaireFresque.display = 'flex';
 contenaireFresque.flexDirection = 'column';
 contenaireFresque.border = '1px solid';
 
-//itemsFresque
-let itemsFresque = document.querySelectorAll('.elementFresque');
-for (let n = 0; n < itemsFresque.length; n++) {
-    let style = itemsFresque[n].style;
-    style.width = '100%';
-    style.border = 'solid 1px';
-    style.backgroundColor = '#'+randomColor+"."+randomColor+"."+randomColor;
-    /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
-     * au nombre qu'il y a dedans
-    */
-    let calcHeight = 100 / itemsFresque.length;
-    let resultCalcHeight = calcHeight+'%';
-    style.height = resultCalcHeight;
-}
+//paragraphe context
+let paraParcDate = document.getElementById('dateFresque');
+let paraParcEntreprise = document.getElementById('entreprise');
+let paraParcPoste = document.getElementById('poste');
+let paraParcRealisation = document.getElementById('realisationPoste');
+
+/**
+ * je voulais de base utilisé les proprietes de la classe créé dans le html
+ * mais le createElement ne vise que les classe natives
+ */
+// //itemsFresque
+// let itemsFresque = document.querySelectorAll('.elementFresque');
+// for (let n = 0; n < itemsFresque.length; n++) {
+//     let style = itemsFresque[n].style;
+//     style.width = '100%';
+//     style.border = 'solid 1px';
+//     style.backgroundColor = '#06A';
+//     /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
+//      * au nombre qu'il y a dedans
+//     */
+//     let calcHeight = 100 / itemsFresque.length;
+//     let resultCalcHeight = calcHeight+'%';
+//     style.height = resultCalcHeight;
+// }
 
 //*****presentation par default*****
 titleSelector.textContent = 'En ce qui me concerne';
@@ -245,6 +255,19 @@ function randomColor() {
     return Math.random() * (255 - 1) + 1;
 }
 
+/**
+ * afficher l'objet dans l'endroit voulu
+ */
+
+function remplissageContext(obj) {
+
+    //mise en place de l'integration de l'objet dans le html
+    paraParcDate.textContent = obj.date;
+    paraParcEntreprise.textContent = obj.entreprise;
+    paraParcPoste.textContent = obj.poste;
+    paraParcRealisation.textContent = obj.realisation;
+}
+
 /***** utilisation des Objets *****/
 //paragraphe parcours
 /**
@@ -272,20 +295,44 @@ const listePoste = ["Eleve", "Vendeur / technicien", "Vendeur / technicien","Ven
 const listeRealisation = ["BEP Electronique / Bac Pro MRIM", "ventes et reparations d'ordinateur",
  "ventes et reparations d'ordinateur", "ventes et reparations d'ordinateur"];
 
-//instanciation de l'objet
- let parcours1 = new Parcours(listeDate[3], listeEntreprise[3], listePoste[3], listeRealisation[3]);
+/**
+ * integrations des objets dans une liste (tableau)
+ * 
+ * j'integre les objets dans une div qui est parent de l'id contenaireFresque
+ * j'integre les parametres des div directement dans la boucle
+ */
+for(let o = 0; o < listeDate.length; o++){
+    var parcoursIt = [];
+    //instanciation de l'objet
+    parcoursIt = new Parcours(listeDate[o], listeEntreprise[o], listePoste[o], listeRealisation[o]);
+    let elementFresque = document.createElement("div");
+    
+    /**
+     * je vais creer un evenement sur la div,
+     * chaque element va afficher son objet dans le paragraphe
+     */
+    elementFresque.addEventListener("onmouseover", remplissageContext(parcoursIt),false);
 
-//mise en place de l'integration de l'objet dans le html
-let paraParcDate = document.getElementById('dateFresque');
-paraParcDate.textContent = parcours1.date;
+    let style = elementFresque.style;
+    style.width = '100%';
+    style.border = 'solid 1px';
+    style.backgroundColor = '#06A';
+    /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
+     * au nombre qu'il y a dedans
+    */
+    //en pourcentage
+    // let calcHeight = 100 / itemsFresque.length;
+    // let resultHeightPourcent = calcHeight+'%';
+    // style.height = resultHeightPourcent;
 
-let paraParcEntreprise = document.getElementById('entreprise');
-paraParcEntreprise.textContent = parcours1.entreprise;
+    //en pixel
+    let calcHeight = 250 / listeDate.length;
+    let resultHeightPixel = calcHeight+"px";
+    style.height = resultHeightPixel;
+    // elementFresque.appendChild(document.createTextNode('test'));
+    document.getElementById('contenaireFresque').appendChild(elementFresque);
+}
 
-let paraParcPoste = document.getElementById('poste');
-paraParcPoste.textContent = parcours1.poste;
 
-let paraParcRealisation = document.getElementById('realisationPoste');
-paraParcRealisation.textContent = parcours1.realisation;
 
-//designation de la puce pour faire changer le texte
+
