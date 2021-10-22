@@ -69,8 +69,8 @@ function displayOff(){
 menu1.onmouseover = displayOn;
 menu1.onmouseout = displayOff;
 
-// menu1.addEventListener("onmouseover", displayOn, false);
-// menu1.addEventListener("onmouseout", displayOff, false);
+// menu1.addEventListener("mouseover", displayOn, false);
+// menu1.addEventListener("mouseout", displayOff, false);
 
 
 /*********** CONTENAIRE ***********/
