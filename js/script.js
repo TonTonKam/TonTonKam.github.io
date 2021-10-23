@@ -82,6 +82,11 @@ let container = document.querySelector('.container').style;
 container.textAlign = 'center';
 container.flex = 10;
 container.background = 'linear-gradient(to right, #777, #eee)';
+container.height = '100vh';
+//integration d'un scroll dans 'container'
+container.overflowY = 'scroll';
+container.scrollbarWidth = 'auto';
+
 /**
  * j'ai créé un switch de passage de titre pour que quand l'on clic
  * sur un bouton ou une classe, on puisse changer de page virtuellement
@@ -99,7 +104,6 @@ selectorA.color = 'green';
 let ulLeft = document.querySelectorAll('.ulLeft');
 for (let indexation = 0; indexation < ulLeft.length; indexation++) {
     let style = ulLeft[indexation].style;
-    style.padding = 0;
     style.textAlign = 'left';
 }
 
@@ -119,13 +123,17 @@ let paraComp = document.getElementById('paraCompetences');
 //parcours
 paraParc.style.width = '80%';
 
+//contentFresque
 let fresqueDesign = document.getElementById('contentFresque').style;
 fresqueDesign.width = '25%';
 fresqueDesign.float = 'right';
-let paragraphText = document.getElementById('contenText').style;
-paragraphText.width = '60%';
-paragraphText.float = 'left';
-paragraphText.border = "1px solid";
+
+//contenText
+let contenText = document.getElementById('contenText');
+let contenTextStyle = contenText.style;
+contenTextStyle.width = '60%';
+contenTextStyle.float = 'left';
+contenTextStyle.border = "1px solid";
 
 //contenaireFresque
 let contenaireFresque = document.getElementById('contenaireFresque').style;
@@ -134,9 +142,6 @@ contenaireFresque.padding = '1%';
 contenaireFresque.display = 'flex';
 contenaireFresque.flexDirection = 'column';
 contenaireFresque.border = '1px solid';
-
-//contenText
-let contenText = document.getElementById('contenText');
 
 //paragraphe context
 let paraParcDate = document.getElementById('dateFresque');
