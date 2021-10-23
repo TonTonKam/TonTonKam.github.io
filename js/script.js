@@ -2,6 +2,9 @@
 let body = document.querySelector('body').style;
 body.display = 'flex';
 body.fontSize = '18px';
+body.padding = 0;
+body.margin = 0;
+body.height = '100hv';
 
 /**
  * la nav sera mise a la vertical a gauche
@@ -29,11 +32,20 @@ let liMenu = document.querySelectorAll('.menuLi');
 for (let j = 0; j < liMenu.length; j++) {
     let style = liMenu[j].style;
     style.display = 'inline-block';
-    style.border = 'solid 1px';
-    style.padding = '3px';
+    style.padding = '5px';
     style.textAlign = 'center';
+    style.backgroundColor = '#192,192,192';
+    style.color = 'white';
+    //ajout du changement de forme de la souris
+    style.cursor = 'pointer';
     liMenu[j].addEventListener('click', clicker);
 }
+
+//premier ul
+let firstUl = document.querySelector('ul').style;
+firstUl.border = '3px solid';
+firstUl.margin = '0.5em';
+firstUl.backgroundColor = '#192,192,192';
 
 /**
  * je fais disparaitre le .menu2 et vais le faire reapparaitre avec 
@@ -43,14 +55,6 @@ for (let j = 0; j < liMenu.length; j++) {
 //.menu1 && .menu2
 let menu1 = document.querySelector('.menu1');
 let menu2 = document.querySelectorAll('.menu2');
-
-/** il faut laisser le .menu2 en display='none' hors fonction pour en
- * faire des parametres par defaut
- */
-for (let k = 0; k < menu2.length; k++) {
-    let style = menu2[k].style;
-    style.display = 'none';
-}
 
 //reutiliser les fonctions pour les faire sur d'autre secteur
 function displayOn(){
@@ -89,7 +93,7 @@ let titleSelector = document.getElementById('title');
 //a
 let selectorA = document.querySelector('a').style;
 selectorA.textDecoration = 'none';
-selectorA.color = 'black';
+selectorA.color = 'green';
 
 //.ulLeft
 let ulLeft = document.querySelectorAll('.ulLeft');
@@ -116,7 +120,7 @@ let paraComp = document.getElementById('paraCompetences');
 paraParc.style.width = '80%';
 
 let fresqueDesign = document.getElementById('contentFresque').style;
-fresqueDesign.width = '30%';
+fresqueDesign.width = '25%';
 fresqueDesign.float = 'right';
 let paragraphText = document.getElementById('contenText').style;
 paragraphText.width = '60%';
@@ -125,13 +129,14 @@ paragraphText.border = "1px solid";
 
 //contenaireFresque
 let contenaireFresque = document.getElementById('contenaireFresque').style;
-let contenaireMax = contenaireFresque.height = '250px';
-contenaireFresque.width = '20%';
 contenaireFresque.margin = '2%';
 contenaireFresque.padding = '1%';
 contenaireFresque.display = 'flex';
 contenaireFresque.flexDirection = 'column';
 contenaireFresque.border = '1px solid';
+
+//contenText
+let contenText = document.getElementById('contenText');
 
 //paragraphe context
 let paraParcDate = document.getElementById('dateFresque');
@@ -164,6 +169,13 @@ funcNone(paraMotiv);
 funcNone(paraParc);
 funcNone(paraComp);
 funcOn(paraDesc);
+/** il faut laisser le .menu2 en display='none' hors fonction pour en
+ * faire des parametres par defaut
+ */
+for (let k = 0; k < menu2.length; k++) {
+    let style = menu2[k].style;
+    style.display = 'none';
+}
 
 //fonction onclick()
 /**
@@ -290,6 +302,9 @@ function Parcours(date, entreprise, poste, realisation){
 }
 
 //liste
+/**
+ * j'ai fait une liste de même longueur pour eviter les erreurs par la suite
+ */
 const listeDate = ["Septembre 1989", "Octobre 1990", "Decembre 1991", "Janvier 1992"];
 const listeEntreprise = ["Lycée La Tourelle", "Montgallet", "Surcouf", "Grosbill"];
 //dans ces dernieres listes, il y a des repetitions
@@ -303,37 +318,99 @@ const listeRealisation = ["BEP Electronique / Bac Pro MRIM", "ventes et reparati
  * j'integre les objets dans une div qui est parent de l'id contenaireFresque
  * j'integre les parametres des div directement dans la boucle
  */
+//initialisation du tableau hors boucle
+let parcoursIt = [];
 for(let o = 0; o < listeDate.length; o++){
-    var parcoursIt = [];
-    //instanciation de l'objet
-    parcoursIt = new Parcours(listeDate[o], listeEntreprise[o], listePoste[o], listeRealisation[o]);
+    /***** creation de la balise de remplissage *****/
     let elementFresque = document.createElement("div");
     
     /**
      * je vais creer un evenement sur la div,
      * chaque element va afficher son objet dans le paragraphe
+     * 
+     * je met une class a la div cree
      */
-    // elementFresque.addEventListener("onmouseovers", remplissageContext(parcoursIt),false);
+    elementFresque.classList.add('styleOb');
 
     let style = elementFresque.style;
     style.width = '100%';
     style.border = 'solid 1px';
+    style.display = 'online-block';
+    style.padding = '5% 0 5% 0'
+    
     style.backgroundColor = "rgb("+randomColor(255)+","+randomColor(255)+","+randomColor(255)+")";
-    /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
-     * au nombre qu'il y a dedans
-    */
+    
+    //*obsolete car la balise va contenir du texte*
+    // /** je fais un calcul pour que la hauteur d'un item soit toujours proportionnel
+    //  * au nombre qu'il y a dedans
+    // */
     //en pourcentage
     // let calcHeight = 100 / itemsFresque.length;
     // let resultHeightPourcent = calcHeight+'%';
     // style.height = resultHeightPourcent;
+    //
+    // en pixel
+    // let calcHeight = 250 / listeDate.length;
+    // let resultHeightPixel = calcHeight+"px";
+    // style.height = resultHeightPixel;
 
-    //en pixel
-    let calcHeight = 250 / listeDate.length;
-    let resultHeightPixel = calcHeight+"px";
-    style.height = resultHeightPixel;
     // elementFresque.appendChild(document.createTextNode('test'));
     document.getElementById('contenaireFresque').appendChild(elementFresque);
+
+    /***** integration des objets dans la balise "contenText" */
+    
+    //instanciation de l'objet
+    /**
+     * j'integre Parcours dans le tableau parcoursIt
+     */
+
+    // /***** A garder
+    //  * les elements ne s'ajoute pas au tableau
+    //  * car le tableau etait dans la boucle
+    //  */
+    // // parcoursIt[o] = new Parcours(listeDate[o], listeEntreprise[o], listePoste[o], listeRealisation[o]);
+    parcoursIt.push(new Parcours(listeDate[o], listeEntreprise[o], listePoste[o], listeRealisation[o]));
+
+    /**
+     * quand un objet est cree, il doit remplir le "contenText"
+     * 
+     * les 4 objets arrivent dans le "contenText"
+     * il n'affiche que le dernier
+     * 
+     * note : il faudrait que l'index des balise de "styleOb" soit synchro avec la liste d'objets
+     */
+
+
+    /****** fonction de passage de souris sur la fresque ******/
+    elementFresque.addEventListener("mouseover", function(event){
+        let nombreItem = document.querySelectorAll('.styleOb');
+        /**
+         * event.target est la meme chose que l'element du querySelectorAll
+         * 
+         * note : le event.target check chaque elements
+         * nombreItem est le tableau du nombre d'element de la fresque
+         * en lui mettant l'index du 'for' on lui demande de sortir chaque element que contient la boucle
+         * quand le target.event a l'index 'x' est egal a l'index du selectorAll alors
+         * on execute le remplissage de l'object ciblé par le même index de chaqu'un
+         */
+        event.stopPropagation();
+        if(event.target == nombreItem[o]){
+            remplissageContext(parcoursIt[o]);
+            contenText.style.backgroundColor = nombreItem[o].style.backgroundColor;
+        }
+    }, false);
+
+    
+    /**
+     * on appele l'element du constructeur et on l'integre dans la balise
+     */
+    elementFresque.append(parcoursIt[o].date);
+
 }
+
+//affichage par default
+remplissageContext(parcoursIt[0]);
+
 
 
 
