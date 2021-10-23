@@ -4,7 +4,7 @@ body.display = 'flex';
 body.fontSize = '18px';
 body.padding = 0;
 body.margin = 0;
-body.height = '100hv';
+body.height = '100vh';
 
 /**
  * la nav sera mise a la vertical a gauche
@@ -34,7 +34,7 @@ for (let j = 0; j < liMenu.length; j++) {
     style.display = 'inline-block';
     style.padding = '5px';
     style.textAlign = 'center';
-    style.backgroundColor = '#192,192,192';
+    style.backgroundColor = 'rgb(192,192,192)';
     style.color = 'white';
     //ajout du changement de forme de la souris
     style.cursor = 'pointer';
