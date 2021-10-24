@@ -20,11 +20,7 @@ nav.style.background = 'linear-gradient(to left, #777, #fff)';
 
 //.menu1 && .menu2
 let menu1 = document.querySelector('.menu1');
-
 let menu2 = document.querySelectorAll('.menu2');
-
-//.focus
-let focusText = document.getElementById('focusText');
 
 //.ulmenu
 /** quand la variable a plusieurs elements c'est forcement un tableau */
@@ -51,38 +47,30 @@ for (let j = 0; j < liMenu.length; j++) {
     liMenu[j].addEventListener('click', clicker);
     liMenu[j].addEventListener("mouseover", function (event) {
         console.log(event.target);
-        if(event.target == liMenu[0] || event.target == focusText){
+        if(event.target == liMenu[0]){
             liMenu[0].style.backgroundColor = 'rgb(175,175,175)';
             /**
-             * il faut que je cible le 1er element du li 
+             * il faut que je cible le 1er element du li mais que le text
+             * 
+             * bug : j'ai tous les elements du li qui sont en 1.25em
+             * mozilla a corrigé ca avec un bouton click
+             * safran a fait un li qui sort une <div> pour le menu
              */
-            focusText.style.fontSize = "1.25em";
+            liMenu[0].style.fontSize = "1.25em";
+            menu2[j].style.fontSize = "1em";
             event.stopPropagation();
-
-        }else{
-            if(event.target == liMenu[j]){
-                liMenu[j].style.backgroundColor = 'rgb(175,175,175)';
-                liMenu[j].style.fontSize = '1.25em';
-            }
         }
 
     });
     liMenu[j].addEventListener("mouseout", function (event) {
-        /**
-         * ce stop propagation evite d'avoir la fenetre qui se ferme a chaque deplacement
-         * 
-         * bug : entre le 1er li et le 2eme li, le 1er reste en 'mouseover' malgret le fait que
-         * le target soit sur le 2eme element
-         */
-        event.stopPropagation();
         if(event.target == liMenu[j]){
             liMenu[j].stylebackgroundColor = 'rgb(192,192,192)';
             liMenu[j].style.fontSize = '1em';
-            focusText.style.fontSize = "1em";
         }
     } );
 
 }//fin liMenu
+
 //.menu1
 menu1.style.padding = 0;
 
@@ -97,7 +85,6 @@ firstUl.backgroundColor = '#192,192,192';
  * je fais disparaitre le .menu2 et vais le faire reapparaitre avec 
  * un event sur le .menu1
  */
-
 
 //reutiliser les fonctions pour les faire sur d'autre secteur
 function displayOn(){
