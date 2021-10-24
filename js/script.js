@@ -18,6 +18,15 @@ let nav = document.querySelector('nav');
 nav.style.flex = 2;
 nav.style.background = 'linear-gradient(to left, #777, #fff)';
 
+//.menu1 && .menu2
+let menu1 = document.querySelector('.menu1');
+
+let menu2 = document.querySelectorAll('.menu2');
+
+//.focus
+let focusText = document.getElementById('focusText');
+
+//.ulmenu
 /** quand la variable a plusieurs elements c'est forcement un tableau */
 let ulMenu = document.querySelectorAll('.menuLu');
 for (let i = 0; i < ulMenu.length; i++) {
@@ -28,6 +37,7 @@ for (let i = 0; i < ulMenu.length; i++) {
     style.padding = 0;
 }
 
+//.liMenu
 let liMenu = document.querySelectorAll('.menuLi');
 for (let j = 0; j < liMenu.length; j++) {
     let style = liMenu[j].style;
@@ -39,7 +49,43 @@ for (let j = 0; j < liMenu.length; j++) {
     //ajout du changement de forme de la souris
     style.cursor = 'pointer';
     liMenu[j].addEventListener('click', clicker);
-}
+    liMenu[j].addEventListener("mouseover", function (event) {
+        console.log(event.target);
+        if(event.target == liMenu[0] || event.target == focusText){
+            liMenu[0].style.backgroundColor = 'rgb(175,175,175)';
+            /**
+             * il faut que je cible le 1er element du li 
+             */
+            focusText.style.fontSize = "1.25em";
+            event.stopPropagation();
+
+        }else{
+            if(event.target == liMenu[j]){
+                liMenu[j].style.backgroundColor = 'rgb(175,175,175)';
+                liMenu[j].style.fontSize = '1.25em';
+            }
+        }
+
+    });
+    liMenu[j].addEventListener("mouseout", function (event) {
+        /**
+         * ce stop propagation evite d'avoir la fenetre qui se ferme a chaque deplacement
+         * 
+         * bug : entre le 1er li et le 2eme li, le 1er reste en 'mouseover' malgret le fait que
+         * le target soit sur le 2eme element
+         */
+        event.stopPropagation();
+        if(event.target == liMenu[j]){
+            liMenu[j].stylebackgroundColor = 'rgb(192,192,192)';
+            liMenu[j].style.fontSize = '1em';
+            focusText.style.fontSize = "1em";
+        }
+    } );
+
+}//fin liMenu
+//.menu1
+menu1.style.padding = 0;
+
 
 //premier ul
 let firstUl = document.querySelector('ul').style;
@@ -52,9 +98,6 @@ firstUl.backgroundColor = '#192,192,192';
  * un event sur le .menu1
  */
 
-//.menu1 && .menu2
-let menu1 = document.querySelector('.menu1');
-let menu2 = document.querySelectorAll('.menu2');
 
 //reutiliser les fonctions pour les faire sur d'autre secteur
 function displayOn(){
@@ -112,6 +155,13 @@ let soulign = document.querySelectorAll('.souligner');
 for (let l = 0; l < soulign.length; l++) {
     let style = soulign[l].style;
     style.textDecoration = 'underline';
+}
+
+//.gras
+let gras = document.querySelectorAll('.gras');
+for (let p = 0; p < gras.length; p++) {
+    let style = gras[p].style;
+    style.fontWeight = 'bolder';
 }
 
 //paragraphe General
@@ -315,7 +365,7 @@ const listeEntreprise = ["Lycée La Tourelle", "Montgallet", "Surcouf", "Grosbil
 //dans ces dernieres listes, il y a des repetitions
 const listePoste = ["Eleve", "Vendeur / technicien", "Vendeur / technicien","Vendeur / technicien"];
 const listeRealisation = ["BEP Electronique / Bac Pro MRIM", "ventes et reparations d'ordinateur",
- "ventes et reparations d'ordinateur", "ventes et reparations d'ordinateur"];
+ "ventes et reparations d'ordinateur", "ventes et reparations d'ordinateurs"];
 
 /**
  * integrations des objets dans une liste (tableau)
@@ -341,7 +391,8 @@ for(let o = 0; o < listeDate.length; o++){
     style.width = '100%';
     style.border = 'solid 1px';
     style.display = 'online-block';
-    style.padding = '5% 0 5% 0'
+    style.padding = '5% 0 5% 0';
+    style.cursor = 'default';
     
     style.backgroundColor = "rgb("+randomColor(255)+","+randomColor(255)+","+randomColor(255)+")";
     
